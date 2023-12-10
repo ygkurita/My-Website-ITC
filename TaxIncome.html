@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet" type="text/css" href="TaxIncome.css">    
+</head>
+<body>
+    <header>
+        <div class="main">
+            <div class="logo">  
+            </div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="UnitConversion.html">UnitConversion</a></li>
+                <li class="active"><a href="TaxIncome.html">TaxIncome</a></li>
+                <li><a href="nth factorial, sum, average.html">Factorial</a></li>
+                <li><a href="Payroll.html">Payroll</a></li>
+                <li><a href="Personal HTML.html">AboutMe</a></li>
+                <li><a href="ContactMe.html">ContactMe</a></li>
+            </ul>
+        </div>   
+    </header>
+<!-- Income Tax Table -->
+<div style="width: 80%; margin: 20px 0; box-sizing: border-box;">
+    <h2>Income Tax Table</h2>
+
+    <table>
+        <tr>
+            <th>Income Range</th>
+            <th>Basic Tax + Rate</th>
+            <th>Example</th>
+        </tr>
+        <tr>
+            <td>Up to P250,000</td>
+            <td>0%</td>
+            <td>Income Tax: 0.00</td>
+        </tr>
+        <tr>
+            <td>P250,000 to P400,000</td>
+            <td>20% of the excess over P250,000</td>
+            <td>Income Tax: 14,000.00 (for P320,000)</td>
+        </tr>
+        <tr>
+            <td>P400,000 to P800,000</td>
+            <td>P30,000 + 25% of the excess over P400,000</td>
+            <td>Income Tax: 60,000.00 (for P520,000)</td>
+        </tr>
+        <tr>
+            <td>P800,000 to P2,000,000</td>
+            <td>P130,000 + 30% of the excess over P800,000</td>
+            <td>Income Tax: 169,000.00 (for P930,000)</td>
+        </tr>
+        <tr>
+            <td>P2,000,000 to P8,000,000</td>
+            <td>P490,000 + 32% of the excess over P2,000,000</td>
+            <td>Income Tax: 618,000.00 (for P2,400,000)</td>
+        </tr>
+        <tr>
+            <td>Over P8,000,000</td>
+            <td>P2,410,000 + 35% of the excess over P8,000,000</td>
+            <td>Income Tax: 3,110,000.00 (for P10,000,000)</td>
+        </tr>
+    </table>
+</div>
+
+<div style="width: 80%; margin: 20px 0; box-sizing: border-box;">
+    <h2>Income Tax Calculator</h2>
+
+    <label for="taxableIncome">Enter Taxable Income:</label>
+    <input type="number" id="taxableIncome">
+
+    <button onclick="calculateTax()">Calculate Tax</button>
+
+    <p id="result"></p>
+</div>
+
+<script>
+    function calculateTax() {
+        const taxableIncome = parseFloat(document.getElementById("taxableIncome").value);
+        let tax = 0;
+
+        if (taxableIncome <= 250000) {
+            tax = 0;
+        } else if (taxableIncome <= 400000) {
+            tax = 0.2 * (taxableIncome - 250000);
+        } else if (taxableIncome <= 800000) {
+            tax = 14000 + 0.25 * (taxableIncome - 400000);
+        } else if (taxableIncome <= 2000000) {
+            tax = 60000 + 0.3 * (taxableIncome - 800000);
+        } else if (taxableIncome <= 8000000) {
+            tax = 169000 + 0.32 * (taxableIncome - 2000000);
+        } else {
+            tax = 618000 + 0.35 * (taxableIncome - 8000000);
+        }
+
+        document.getElementById("result").innerHTML = `Income Tax: ${tax.toFixed(2)}`;
+    }
+</script>
+
+</body>
+</html>
